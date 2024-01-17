@@ -1,0 +1,26 @@
+
+# loads data from address 0x00 (0x12) to r0 , loads data from address 0x02 (0x45) to r1, loads data from address 0x06 (0x12) to r2, loads data from address 0x10 (0x99) to r3
+load r0 0 
+load r1 2
+load r2 6
+load r3 10
+# add the data in r0 and r1 and store in r0 (0x57), then add the data in r2 and r3 and store in r2 (0xab).
+add r0 r0 r1
+add r2 r2 r3
+# then subtract the data in r2 from r0 and store in r0 (ac). Then store the data from r0 into 0x11 --> 0xac into address 0x11.
+sub r0 r0 r2
+store r0 11
+# loads data from address in r1 to r0 (0x00), loads data from address stored in r2 to r1 (0x00), loads data from address stored in r3 to r2 (0x00), loads data from address stored in r3 to r2 (0x12).
+load r0 r1
+load r1 r2
+load r2 r3
+load r3 r2
+# adds the data in r3 and imm 5 and store in r3 (0x17), add data in r2 and imm 3 and store it back into r2 (0x03), and add data in r1 and imm 5 and store it back into r1 (0xfb), then lastly store the data in r1 into address 0x08 (0xfb --> address 0x08).
+add r3 r3 5
+add r2 r2 3
+sub r1 r1 5
+store r1 8
+
+
+.data 0x12 0x23 0x45 0x11 0x23 0x34 0x12 0x99 0x23 0x34 0x99 0xff 0x23 0x1b 0x98 0x88
+
